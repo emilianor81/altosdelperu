@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Altos del Peru SRL</title>
+    <meta name="description" content="Esta es una pagina de una constructora de Propiedades de Tucuman- Argentina">
+    <meta name="keywords" content="Constructora, terrenos, propiedades, casas, country, barrio privado">
+    <meta name="author" content="Ing. Emiliano Rodriguez">
+
+    <!-- OPEN GRAPH-->
+
+    <meta property="og:locale" content="Es_es">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Altos del Peru SRL">
+    <meta property="og:description" content="Pagina de la constructora Altos del Peru SRL">
+    <meta property="og:url" content="https://altosdelperusrl.com.ar ">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="icon" type="favicon/x-icon" href="img/logo.png" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div id=menu_principal class="row">
+            <header id="header_index" class="col-2">
+                <img class="img_logo" src="img/logo.png" alt="logo de la constructora">
+            </header>
+            <nav class="col-8 menu ml-8">
+                <ul id="menu_index" class="row">
+                    <li class="col"> <a href="index.html"> INICIO</a></li>
+                    <li class="col"> <a href="propiedades.html"> PROPIEDADES</a></li>
+                    <li class="col"> <a href="emprendimientos.html"> EMPRENDIMIENTOS</a></li>
+                    <li class="col"> <a href="nosotros.html"> NOSOTROS </a></li>
+                    <li class="col"> <a href="contacto.html"> CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row"> 
+            <div class="col-2" id="filtros">
+                <div>
+                    <h6>Filtros Activos:</h6> <!-- Son los que voy seleccionando-->
+
+                </div>
+                <hr>
+                <p>Precios</p>
+                <form >
+                   <input name="moneda" type="radio" value="peso" />AR$
+                   <input name="moneda" type="radio" value="dolar" />US$          
+                </form>
+                <p>Desde:</p> <input type="text">
+                <p>Hasta:</p> <input type="text">
+                <button> Aplicar</button>
+                <hr>
+                <p>Tipo de Propiedad</p>
+                <input type="checkbox" id="cboxTerreno" value="cboxTerreno"><label for="cboxTerreno">Terreno:</label> <br>
+                <input type="checkbox" id="cboxTerrenoPozo" value="cboxTerrenoPozo"> <label for="cboxTerrenoPozo">Terreno en Pozo</label><br>
+                <input type="checkbox" id="cboxCasa" value="cboxCasa"><label for="cboxCasa">Casa</label> <br>
+                <hr>
+                <p>Cantidad Dormitorios</p>
+                <input type="checkbox" id="cbox1" value="un_cbox"><label for="cbox1">Un dormitorio:</label> <br>
+                <input type="checkbox" id="cbox2" value="dos_cbox"> <label for="cbox2">Dos dormitorios</label><br>
+                <input type="checkbox" id="cbox3" value="tres_cbox"><label for="cbox3">Tres dormitorios</label> <br>
+                <input type="checkbox" id="cbox4" value="mas_cbox"><label for="cbox4">Mas de 3 dormitorios</label> <br>
+
+            </div>
+            <div class="col-10"  id="galeria">
+                <img class="imgs" src="img/mellizas.jpg" alt="Sonrisa con ortodoncia">
+                <img class="imgs" src="img/mellizas 2.jpg" alt="Cepillado correcto">
+                <img class="imgs" src="img/mansion_portada.jpg" alt="">
+                <img class="imgs" src="img/mukdise.jpg" alt="">
+                <img class="imgs" src="img/plano nogales plaza.jpg" alt="">
+                <img class="imgs" src="img/portada.png" alt="">
+                <img class="imgs" src="img/portico.jpg" alt="">
+                <img class="imgs" src="img/ubicacion nogales plaza.jpg" alt="Sonrisa con ortodoncia">
+                <img class="imgs" src="img/alondraAereo.jpg" alt="Cepillado correcto">
+                <img class="imgs" src="img/alondrasSum.jpg" alt="">
+            </div>
+            
+        </div>
+        
+
+
+        <!-- INICIO DEL FOOTER-->
+        <footer id=footer_index class="col-12 row">
+            <div class="col-6"> 
+                <h3>Acerca de Nosotros:</h3>
+                <h5> Direccion: 9 de Julio 485 PA- SMT- Tucuman- Argentina</h5>
+                <h5>Teléfono: 381 5039017</h5>
+                <h5>Email: altosdelperusrl@gmail.com</h5>
+                <hr>
+
+            </div>
+
+            <div class="col-6"> 
+                <h3> Búscanos en nuestras redes</h3>
+                <a href="#"><img class="iconos_redes" src="img/iconoface2c.png" alt="FaceBook" title="FaceBook"/> </a>
+                <a href="#"><img class="iconos_redes" src="img/iconoInstac.png" alt="Instagram" title="Instagram"/></a>
+            </div>
+            <p id="pAutor"> ©  Autor: Ing. Emiliano Rodriguez ---                  Email: emilianor81@gmail.com </p>
+        </footer>
+        <!-- FIN DEL FOOTER-->
+
+    </div>
+
+    <script type="text/javascript" src="jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
