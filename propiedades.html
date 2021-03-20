@@ -41,18 +41,18 @@
         <div class="row"> 
             <div class="col-2" id="filtros">
                 <div>
-                    <h6>Filtros Activos:</h6> <!-- Son los que voy seleccionando-->
+                    <h6 id="pfiltros">Filtros Activos:</h6> <!-- Son los que voy seleccionando-->
 
                 </div>
                 <hr>
                 <p>Precios</p>
                 <form >
-                   <input name="moneda" type="radio" value="peso" />AR$
-                   <input name="moneda" type="radio" value="dolar" />US$          
+                   <input id="cpeso" name="moneda" type="radio" value="peso" />AR$
+                   <input id="cdolar" name="moneda" type="radio" value="dolar" />US$          
                 </form>
-                <p>Desde:</p> <input type="text">
-                <p>Hasta:</p> <input type="text">
-                <button> Aplicar</button>
+                <p id="pdesde">Desde:</p> <input id="idesde"  type="number">
+                <p id="phasta">Hasta:</p> <input  id="ihasta" type="number">
+                <button id="baplicar"> Aplicar</button>
                 <hr>
                 <p>Tipo de Propiedad</p>
                 <input type="checkbox" id="cboxTerreno" value="cboxTerreno"><label for="cboxTerreno">Terreno:</label> <br>
@@ -66,7 +66,7 @@
                 <input type="checkbox" id="cbox4" value="mas_cbox"><label for="cbox4">Mas de 3 dormitorios</label> <br>
 
             </div>
-            <div class="col-10"  id="galeria">
+            <div class="col-9"  id="galeria">
                 <img class="imgs" src="img/mellizas.jpg" alt="Sonrisa con ortodoncia">
                 <img class="imgs" src="img/mellizas 2.jpg" alt="Cepillado correcto">
                 <img class="imgs" src="img/mansion_portada.jpg" alt="">
@@ -84,14 +84,13 @@
 
 
         <!-- INICIO DEL FOOTER-->
-        <footer id=footer_index class="col-12 row">
+        <footer id=footer_index class="row">
             <div class="col-6"> 
                 <h3>Acerca de Nosotros:</h3>
                 <h5> Direccion: 9 de Julio 485 PA- SMT- Tucuman- Argentina</h5>
                 <h5>Teléfono: 381 5039017</h5>
                 <h5>Email: altosdelperusrl@gmail.com</h5>
                 <hr>
-
             </div>
 
             <div class="col-6"> 

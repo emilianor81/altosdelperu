@@ -22,25 +22,19 @@
 
 <body>
     <div class="container-fluid">
-        <div id=menu_principal class="row">
-            <header id="header_index" class="col-2">
-                <img class="img_logo" src="img/logo.png" alt="logo de la constructora">
-            </header>
-            <nav class="col-8 menu ml-8">
-                <ul id="menu_index" class="row">
+        <main id="contenedorPrincipal" class="row">   
+                <ul id="menu_index_index" class="col-8 row">
                     <li class="col"> <a href="index.html"> INICIO</a></li>
                     <li class="col"> <a href="propiedades.html"> PROPIEDADES</a></li>
                     <li class="col"> <a href="emprendimientos.html"> EMPRENDIMIENTOS</a></li>
                     <li class="col"> <a href="nosotros.html"> NOSOTROS </a></li>
                     <li class="col"> <a href="contacto.html"> CONTACTO</a></li>
                 </ul>
-            </nav>
-        </div>
-        <main class="col-12 row">   <!-- <main class="col-12">-->
-             <!--<div class="row"> -->
-               <!--<div class="col-md-12"> -->
+                <img class="img_logo_index" src="img/logo.png" alt="logo de la constructora">
+
+
                     <h5 id="tituloFiltro">Ingrese una opcion para filtrar propiedades...</h5>
-                    <select id="comboOperacion"  name="comboOperacion">
+                    <select id="comboOperacion"  name="comboOperacion" >
                         <option value="value1">Venta</option>
                         <option value="value2" selected>Construccion</option>
                         <option value="value3">Alquiler</option>
@@ -51,24 +45,18 @@
                         <option value="value3">Terreno en pozo</option>
                         <option value="value3">Departamento</option>
                     </select>
-                    <input id="inputBuscar" type="text">
+                    <input id="inputBuscar" type="text" placeholder="Ingrese una palabra clave para buscar">
                     <button id="botonBuscar"> Buscar </button>
-
-                    <img id="imgPortada" src="img/mansion2.jpg" alt="">
-                
-            <!--</div> -->
-            
 
         </main>
 
-        <footer id=footer_index class="col-12 row">
+        <footer id=footer_index class="row">
             <div class="col-6"> 
                 <h3>Acerca de Nosotros:</h3>
                 <h5> Direccion: 9 de Julio 485 PA- SMT- Tucuman- Argentina</h5>
                 <h5>Teléfono: 381 5039017</h5>
                 <h5>Email: altosdelperusrl@gmail.com</h5>
                 <hr>
-
             </div>
 
             <div class="col-6"> 
