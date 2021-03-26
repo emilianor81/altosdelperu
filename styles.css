@@ -37,18 +37,10 @@ margin: -15px;
 .img_logo{
  
   width: 100px;
-   /* margin-left: 22px;
-    position: absolute;
-    margin-top: 21px;*/
+  margin-left: 6px;
+  position: absolute;
+  margin-top: 6px;
 
-    margin-left: 6px;
-    position: absolute;
-    margin-top: 6px;
-    /*
-  margin-top: 15px;
-  margin-left: 60px;
-  height: 100px;
-  width: 100px;*/
   
 }
 
@@ -58,17 +50,6 @@ margin: -15px;
       position: absolute;
       margin-top: 21px;
 }
-
-/*
-h1 {
-  color: #aa8976;
-  align-content: center;
-  text-align: center;
-  font-family: OpenSansCustom;
-  font-size: 45px;
-}*/
-
-
 
 
 /*BARRA NAVEGACION*/
@@ -138,7 +119,7 @@ a:hover {
 }
 
 #footer_index{
-  background-color:#1d1c1c;
+  background-color: #444443;
   color: #f0e2d0;
 
 }
@@ -182,6 +163,18 @@ footer h5{
   margin-left: 0px;
 }
 
+.galerias {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-left: 0px;
+}
+
+.contFiltradas{
+  border: 5px solid rgb(75, 73, 73);
+}
+
 .imgs {
   flex-grow: 1;
   height: 250px;
@@ -205,8 +198,15 @@ footer h5{
 
 
 #filtros{
-  border: 2px solid gray;
+
   margin-left: 10px;
+  margin-top: -9999px;
+
+  /*     margin-left: 12px;
+    border: 2px solid gray;
+    margin-left: 10px; 
+    margin-top: 25px;
+    */
 }
 
 
@@ -231,6 +231,7 @@ footer h5{
 #baplicar{
   width: 70px;
   margin-left: 47px;
+  margin-top: 10px;
 }
 
 #pfiltros{
@@ -238,25 +239,33 @@ footer h5{
   margin-top: 8px;
 }
 
-/*BOTONES DE BUSQUEDA*/
+/*BOTONES DE BUSQUEDA pagina INDEX*/
+/*
+#contenedorFiltros{
+  ///display: none;
+}*/
 
-#comboOperacion, #comboPropiedad, #inputBuscar, #botonBuscar{
+#comboOperacion, #comboPropiedad, #comboDormitorios, #botonBuscar{
   position: absolute;
     width: 150px;
     height: 33px;
 }
 
-#comboOperacion{
+
+#comboOperacion {
   top: 250px;
-  left: 327px;
+  left: 226px;
+  width: 201px;
 }
 
-#comboPropiedad{
+#comboPropiedad {
   top: 250px;
-  left: 500px;
+  left: 429px;
+  width: 225px;
 }
 
-#inputBuscar{
+
+#comboDormitorios{
   top: 250px;
   left: 659px;
 }
@@ -269,9 +278,26 @@ footer h5{
   text-transform: none;
   position: relative;
   top: 217px;
-  left: -394px;  
+  left: -260px;  
 }
 
+#displayIndex{
+  border: 1px solid black;
+  margin: 20px; 
+  padding: 0px;
+}
+
+#displayIndex ul{
+  margin-left: 20px;
+
+}
+
+
+p {
+  margin-top: 0px;
+  margin-bottom: 8px;
+  margin-left: 30px;
+}
 
 /* PAGINA CONTACTO*/
 
@@ -304,7 +330,7 @@ footer h5{
   height: 150px;
 }
 
-#inputBuscar{
+#comboDormitorios{
   width: 295px;
 }
   
@@ -343,8 +369,8 @@ iframe{
 }
 
 .imgEmprendimientos{
-  height: 250px;
-  width: 250px;
+  height: 253px;
+  width: 436px;
   object-fit: cover;
   padding: 5px;
 }
@@ -353,12 +379,16 @@ iframe{
 
 .cajasNosotros{
   display: flex;
+  border: 1px solid grey;
+  width: 1150px;
+    padding: 10px;
+  margin: 10px;
 }
 
 .imgNosotros{
   height: 350px;
-    width: 576px;
-  object-fit: cover;
+  width: 830px;
+    object-fit: cover;
   padding: 5px;
 }
 
