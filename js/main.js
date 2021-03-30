@@ -1,7 +1,8 @@
 listaPropiedadesJSON = []; //declaro el array de objetos que contendra las propiedades guardadas
-
 //DECLARO LAS VARIABLES PARA TRABAJAR CON EL DOM
 let contenedorFiltros = document.querySelector("#contenedorFiltros");
+contenedorFiltros.style.display = "none";
+
 let panelFiltros = document.querySelector("#filtros")
 let comboFiltros = document.querySelector("#combos")
 let panelFiltrosActivos = document.querySelector("#filtrosActivos");
@@ -72,7 +73,7 @@ const renderIndex = (tipoPropiedad) => {
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == tipoPropiedad) { //Solo imprimimos los elementos que coincidan con el tipo elegido del dropdown
             // Hay que colocar += para que se sume al contenido ya puesto antes, sino lo sobreescribe.  
-            contenedorFiltros.style.display = "none";
+          //  contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -140,7 +141,6 @@ const renderIndexOperacion = (tipoOperacion) => {
             // Hay que colocar += para que se sume al contenido ya puesto antes, sino lo sobreescribe.  
             console.log('entro al if');
             console.log(contenedorFiltros.style);
-            contenedorFiltros.style.display = "none";
             console.log(contenedorFiltros.style);
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
@@ -206,7 +206,6 @@ const renderIndexDorm = (cantDorm) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == cantDorm) {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -264,7 +263,6 @@ const renderIndexPrecio = (Desde, Hasta) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.precio >= Desde && elemento.precio <= Hasta) {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -309,7 +307,6 @@ cboxTerreno.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'Terreno') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -357,7 +354,6 @@ cboxTerrenoPozo.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'Terreno en pozo') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -405,7 +401,6 @@ cboxCasa.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'casa') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -453,7 +448,6 @@ cboxDepto.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'Departamento') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -502,7 +496,6 @@ cbox1.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == '1') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -549,7 +542,6 @@ cbox2.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == '2') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -598,7 +590,6 @@ cbox3.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == '3') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -647,7 +638,6 @@ cbox4.addEventListener('click', (evt) => {
     let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios > '3') {
-            contenedorFiltros.style.display = "none";
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
