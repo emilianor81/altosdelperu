@@ -1,5 +1,8 @@
+
+
+//DECLARO LAS VARIABLES 
+
 listaPropiedadesJSON = []; //declaro el array de objetos que contendra las propiedades guardadas
-//DECLARO LAS VARIABLES PARA TRABAJAR CON EL DOM
 let contenedorFiltros = document.querySelector("#contenedorFiltros");
 contenedorFiltros.style.display = "none";
 
@@ -7,21 +10,32 @@ let panelFiltros = document.querySelector("#filtros")
 let comboFiltros = document.querySelector("#combos")
 let panelFiltrosActivos = document.querySelector("#filtrosActivos");
 let aIndex = document.querySelectorAll(".aIndex");
+let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
+let contenedor = document.querySelector("#displayIndex");
+
 console.log(aIndex[0]);
 
 
 //DECLARO LAS FUNCIONES
 
-function CambiarColorLink(){
+function CambiarColorLink() {
     aIndex[0].style.color = "#00000098";
     aIndex[1].style.color = "#00000098";
     aIndex[2].style.color = "#00000098";
     aIndex[3].style.color = "#00000098";
 }
 
+function estilosPanelFiltros() {
+    panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
+    panelFiltros.style.margin = "20px";
+    contenedorPrincipal.style.height = "122px";
+    contenedorPrincipal.style.background = "#c0c0c0";
+    comboFiltros.style.display = "none";
+}
+
 
 $(() => { //Esto se ejecuta una vez termina de cargar todo el DOM, es algo adicional, no necesario.
-    $.getJSON("data/propiedades.json", (respuesta) => { //Obtenemos los datos desde un JSON en forma estática. Es una petición asíncrona.
+    $.getJSON("data/propiedades.JSON", (respuesta) => { //Obtenemos los datos desde un JSON en forma estática. Es una petición asíncrona.
         // GUARDAMOS LA RESPUESTA EN UNA VARIABLE DENTRO DE LISTATAREASJSON.
         listaPropiedadesJSON = respuesta;
         console.log(listaPropiedadesJSON);
@@ -29,21 +43,50 @@ $(() => { //Esto se ejecuta una vez termina de cargar todo el DOM, es algo adici
     })
 })
 
-function DesCheckTipo(){
+function DesCheckTipo() {
     cbox1.checked = false;
     cbox2.checked = false;
     cbox3.checked = false;
     cbox4.checked = false;
 }
 
-function DesCheckDorm(){
+function DesCheckDorm() {
     cboxTerreno.checked = false;
-cboxTerrenoPozo.checked = false;
-cboxCasa.checked = false;
-cboxDepto.checked = false;
+    cboxTerrenoPozo.checked = false;
+    cboxCasa.checked = false;
+    cboxDepto.checked = false;
 }
 
-// EVENTO CHANGE DEL COMBO DE tipo de PROPIEDAD DE LA PAGINA INDEX
+
+function mostrarSeleccionEnPanelFiltros(seleccionado) {
+    listaPropiedadesJSON.map(elemento => {
+        if (elemento.tipo == seleccionado) {
+            contenedorFiltros.style.display = "";
+            contenedor.innerHTML += ` 
+            <div class= "contFiltradas">
+            <p>
+            <ul>
+            <li> Tipo: ${elemento.tipo}</li>
+            <li> Dormitorios: ${elemento.dormitorios}</li>
+            <li> Precio: ${elemento.precio}</li>
+            <li> Operacion: ${elemento.operacion}</li>
+            <li> Detalle: ${elemento.detalle}</li> 
+            <li> Fotos: </li> </ul></p>
+            <div class="galerias">
+            <img src=${elemento.img[0]} class="imgs">
+            <img src=${elemento.img[1]} class="imgs">
+            <img src=${elemento.img[2]} class="imgs">
+            </div>
+            </div>
+            <br>
+           `
+        }
+    });
+}
+
+
+
+// EVENTO CHANGE DEL COMBO DE tipo de PROPIEDAD DE LA PAGINA INDEX  //// PRUEBA HACIENDO FUNCION
 
 let comboPropiedad = document.querySelector('#comboPropiedad');
 comboPropiedad.addEventListener('change', (evt) => {
@@ -66,14 +109,24 @@ comboPropiedad.addEventListener('change', (evt) => {
 })
 
 
+const renderIndex = (seleccion) => {
+    document.querySelector("#displayIndex").innerText = ``
+    mostrarSeleccionEnPanelFiltros(seleccion);
+    estilosPanelFiltros();
+    panelFiltrosActivos.innerHTML += ` <p> Tipo Propiedad: ${seleccion}</p>`;
+    panelFiltrosActivos.style.color = "red";
+    CambiarColorLink();
+}
+
+
+
+/*
 const renderIndex = (tipoPropiedad) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
 
     listaPropiedadesJSON.map(elemento => {
-        if (elemento.tipo == tipoPropiedad) { //Solo imprimimos los elementos que coincidan con el tipo elegido del dropdown
-            // Hay que colocar += para que se sume al contenido ya puesto antes, sino lo sobreescribe.  
-          //  contenedorFiltros.style.display = "none";
+        if (elemento.tipo == tipoPropiedad) { 
+
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -94,27 +147,19 @@ const renderIndex = (tipoPropiedad) => {
             <br>
            `
         }
-        panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
-        panelFiltros.style.margin = "20px";
-        contenedor.style.border = "1px solid black";
-   //     contenedor.style.margin = "20px";
-    //    contenedor.style.padding = "25px";
-
-        let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
-        contenedorPrincipal.style.height = "122px";
-        contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        estilosPanelFiltros();
+        
     })
     panelFiltrosActivos.innerHTML += ` <p> Tipo Propiedad: ${tipoPropiedad}</p>`;
     panelFiltrosActivos.style.color = "red";
     CambiarColorLink();
- //   aIndex.style.color = "#00000098";
+}*/
 
 
-}
 
 
 // EVENTO CHANGE DEL COMBO DE tipo de OPERACION DE LA PAGINA INDEX
+//no esta funcionando porque lo cambie por el 
 
 let comboOperacion = document.querySelector('#comboOperacion');
 comboOperacion.addEventListener('change', (evt) => {
@@ -133,15 +178,15 @@ comboOperacion.addEventListener('change', (evt) => {
 })
 
 
+
+
+
+
 const renderIndexOperacion = (tipoOperacion) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
     listaPropiedadesJSON.map(elemento => {
-        if (elemento.operacion == tipoOperacion) { //Solo imprimimos los elementos que coincidan con el tipo elegido del dropdown
-            // Hay que colocar += para que se sume al contenido ya puesto antes, sino lo sobreescribe.  
-            console.log('entro al if');
-            console.log(contenedorFiltros.style);
-            console.log(contenedorFiltros.style);
+        if (elemento.operacion == tipoOperacion) { //
+
             contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
@@ -162,12 +207,8 @@ const renderIndexOperacion = (tipoOperacion) => {
             <br>
            `
         }
-        panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
-        panelFiltros.style.margin = "20px";
-        let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
-        contenedorPrincipal.style.height = "122px";
-        contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        estilosPanelFiltros();
+              
     })
     panelFiltrosActivos.innerHTML += ` <p> Tipo Operacion: ${tipoOperacion}</p>`;
     panelFiltrosActivos.style.color = "red";
@@ -203,7 +244,8 @@ comboDorm.addEventListener('change', (evt) => {
 
 const renderIndexDorm = (cantDorm) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*  let contenedor = document.querySelector("#displayIndex");*/
+
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == cantDorm) {
             contenedorFiltros.style.display = "";
@@ -226,12 +268,15 @@ const renderIndexDorm = (cantDorm) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
+
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML += ` <p> Tipo: ${cantDorm} Dormitorios</p>`;
     panelFiltrosActivos.style.color = "red";
@@ -260,7 +305,7 @@ bAplicar.addEventListener('click', (evt) => {
 
 const renderIndexPrecio = (Desde, Hasta) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /* let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.precio >= Desde && elemento.precio <= Hasta) {
             contenedorFiltros.style.display = "";
@@ -283,12 +328,14 @@ const renderIndexPrecio = (Desde, Hasta) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -304,7 +351,7 @@ const renderIndexPrecio = (Desde, Hasta) => {
 let cboxTerreno = document.querySelector('#cboxTerreno');
 cboxTerreno.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*  let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'Terreno') {
             contenedorFiltros.style.display = "";
@@ -327,12 +374,14 @@ cboxTerreno.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -342,7 +391,7 @@ cboxTerreno.addEventListener('click', (evt) => {
     cboxCasa.checked = false;
     cboxDepto.checked = false;
     DesCheckTipo();
-    
+
 })
 
 
@@ -351,7 +400,7 @@ cboxTerreno.addEventListener('click', (evt) => {
 let cboxTerrenoPozo = document.querySelector('#cboxTerrenoPozo');
 cboxTerrenoPozo.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'Terreno en pozo') {
             contenedorFiltros.style.display = "";
@@ -374,12 +423,14 @@ cboxTerrenoPozo.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -398,7 +449,7 @@ cboxTerrenoPozo.addEventListener('click', (evt) => {
 let cboxCasa = document.querySelector('#cboxCasa');
 cboxCasa.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /* let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'casa') {
             contenedorFiltros.style.display = "";
@@ -421,12 +472,14 @@ cboxCasa.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -445,7 +498,7 @@ cboxCasa.addEventListener('click', (evt) => {
 let cboxDepto = document.querySelector('#cboxDepto');
 cboxDepto.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /* let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.tipo == 'Departamento') {
             contenedorFiltros.style.display = "";
@@ -468,12 +521,14 @@ cboxDepto.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -493,7 +548,7 @@ cboxDepto.addEventListener('click', (evt) => {
 let cbox1 = document.querySelector('#cbox1');
 cbox1.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*  let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == '1') {
             contenedorFiltros.style.display = "";
@@ -516,12 +571,14 @@ cbox1.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -539,7 +596,7 @@ cbox1.addEventListener('click', (evt) => {
 let cbox2 = document.querySelector('#cbox2');
 cbox2.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*  let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == '2') {
             contenedorFiltros.style.display = "";
@@ -562,12 +619,14 @@ cbox2.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -587,7 +646,7 @@ cbox2.addEventListener('click', (evt) => {
 let cbox3 = document.querySelector('#cbox3');
 cbox3.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*  let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios == '3') {
             contenedorFiltros.style.display = "";
@@ -610,12 +669,14 @@ cbox3.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -635,7 +696,7 @@ let cbox4 = document.querySelector('#cbox4');
 cbox4.addEventListener('click', (evt) => {
     console.log(evt)
     document.querySelector("#displayIndex").innerText = ``
-    let contenedor = document.querySelector("#displayIndex");
+    /*  let contenedor = document.querySelector("#displayIndex");*/
     listaPropiedadesJSON.map(elemento => {
         if (elemento.dormitorios > '3') {
             contenedorFiltros.style.display = "";
@@ -658,12 +719,14 @@ cbox4.addEventListener('click', (evt) => {
             <br>
            `
         }
+        estilosPanelFiltros();
+        /*
         panelFiltros.style.border = "5px solid rgb(75, 73, 73)";
         panelFiltros.style.margin = "20px";
         let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
         contenedorPrincipal.style.height = "122px";
         contenedorPrincipal.style.background = "#c0c0c0";
-        comboFiltros.style.display = "none";
+        comboFiltros.style.display = "none";*/
     })
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
@@ -679,7 +742,7 @@ cbox4.addEventListener('click', (evt) => {
 
 //EVENTO CLICK DEL ENLACE INICIO 
 /*
-let linksContacto = document.getElementsByClassName("linkContacto");    
+let linksContacto = document.getElementsByClassName("linkContacto");
 linksContacto.addEventListener('click', (evt) => {
     linksContacto.style.color = "blue";
 });
