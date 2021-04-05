@@ -26,9 +26,7 @@ margin: -15px;
 
 .container-fluid{
   box-shadow: 0px 0px 10px #ccc;
-  /*min-height: 80vh;*/
   background-color: #c0c0c0;
- /* background-color: #f0e2d0;*/
 }
 
 
@@ -80,14 +78,12 @@ margin: -15px;
 }
 
 
-#menu_index{
- /* background-color: RGB(192, 192, 192);*/
+#menu_index, #menu_index_emprendimientos{
   list-style: none;
   margin-top: 48px;
 }
 
 #menu_index_nosotros{
-  /* background-color: RGB(192, 192, 192);*/
    list-style: none;
    margin-top: 48px;
  }
@@ -97,7 +93,6 @@ a{
   font-family: OpenSansCustom;
   text-decoration: none;
   color:#00000098;
- /* color: rgb(138, 112, 90);*/
   font-size: 25px;
   list-style: none;
 }
@@ -113,7 +108,6 @@ a:hover {
 
 #pAutor{
   margin-left: 445px;
-  /*text-align: center;*/
 }
 
 
@@ -191,8 +185,6 @@ footer h5{
   border-radius: 15px;
 }
 
-/*
-.imgs:hover {-webkit-transform:scale(1.3);transform:scale(1.3);}*/
 
 #galeria {overflow:hidden;}
 
@@ -205,15 +197,8 @@ footer h5{
 
 
 #filtros{
-
   margin-left: 10px;
   margin-top: -9999px;
-
-  /*     margin-left: 12px;
-    border: 2px solid gray;
-    margin-left: 10px; 
-    margin-top: 25px;
-    */
 }
 
 
@@ -321,7 +306,6 @@ p {
 }
 #contenedorMapa h5{
   color: #4e4e4e;
-  /*color: rgba(255, 255, 255, 0.685);*/
 }
 
 #botEnviar, #botLimpiar{
@@ -370,17 +354,18 @@ iframe{
 .cajasEmprendimientos{
   display: flex;
   border: 1px solid grey;
- /* width: 850px;*/
   padding: 10px;
   margin: 10px;
 }
 
 .imgEmprendimientos{
-  height: 253px;
-  width: 436px;
-  object-fit: cover;
-  padding: 5px;
-}
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    padding: 2px;
+  }
+
 
 /* PAGINA NOSOTROS*/
 
@@ -416,8 +401,6 @@ iframe{
 /* PAGINA CONTACTO */
 
 
-/**acomodando el grid de bootstrap*/
-/***********************************/
 
 @media (min-width: 1400px){
 #contenedorMapa {
@@ -483,14 +466,10 @@ iframe{
 .menu {
   left: 45px;
 }
-#menu_index{
+#menu_index, #menu_index_emprendimientos{
   padding-right: 0px;
   padding-left: 0px;
 }
-
-
-
-
 a{
   font-size: 18px;
 }
@@ -510,14 +489,13 @@ iframe {
   margin-top: 34px;
       margin-left: -5px;
 }
-
 .liNosotros{
   padding-left: 0px;
 }
 #contenedorMapa {
   margin-left: -37px;
 }
-#menu_index li{
+#menu_index li, #menu_index_emprendimientos li{
   padding-right: 15px;
   padding-left: 1px;
 }
@@ -557,9 +535,6 @@ iframe {
   display: none;
   }
   }*/
-
-
-
 
 
 /*************************************/
@@ -629,6 +604,10 @@ a{
 }
 /*******************************/
 @media (max-width: 575px){
+  #menu_index_emprendimientos {
+    margin-top: 5px;
+    margin-left: 52px;
+}
   #menu_index {
     margin-top: 27px;
     margin-left: 15px;
@@ -685,10 +664,7 @@ a{
     height: 330px;
     margin-left: 0px;
   }
- 
-
-
-}
+ }
 
 
 /*********************************/
@@ -718,6 +694,7 @@ footer h5 {
 #contenedorMapa {
   margin-left: 64px;
 }
+
 /************************************/
 }
 @media (max-width: 310px){
