@@ -21,25 +21,103 @@
 #contenedorPrincipal{
 background-image: url("img/mansion2.jpg");
 height: 932px;
-margin: -15px;
+/*margin: -15px;*/
+    /* Para dejar la imagen de fondo centrada, vertical y horizontalmente */
+    background-position: center center;  
+  /* Para que la imagen de fondo no se repita */
+    background-repeat: no-repeat;
+    /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+    background-attachment: fixed;
+    /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+    background-size: cover;
+    /* Se muestra un color de fondo mientras se está cargando la imagen  de fondo o si hay problemas para cargarla */
+   /* background-color: #66999;*/
 } 
 
 .container-fluid{
   box-shadow: 0px 0px 10px #ccc;
   background-color: #c0c0c0;
+ width: 100%;
+ padding-right: 0px; 
+ padding-left: 0px; 
+ margin-right: auto;
+ margin-left: auto;
 }
 
 
-/*CABECERA*/
+/* CABECERA DE PAGINA INICIO*/
 
-.img_logo{
- 
+.imgInicio_logo{
   width: 100px;
   margin-left: 6px;
   position: absolute;
   margin-top: 6px;
+}
 
+#combos{
+  height: 120px;
+  justify-content: center;
+  text-align: center;
+  top: -175px;
+}
+
+#filtrosActivos, #filtrosPrecios, #filtrosPropiedad, #filtrosDormitorios{
+  border-bottom: 1px solid black;
+  margin: 0px;
   
+}
+
+#filtrosPrecios, #filtrosPropiedad, #filtrosDormitorios{
+  border: 1px solid black;
+  padding: 15px;
+    width: 33%;
+    margin-left: 0px;
+    
+}
+
+
+#headerInicio{
+  padding-right: 0px;
+}
+#menuPrincipalInicio{
+  max-height: 115px;
+ 
+}
+
+#navInicio{
+  top: 35px;
+  height: 40px;
+  left: 65px;
+}
+
+#menuInicio{
+  list-style: none;
+  margin-bottom: 0px;
+}
+
+
+#menuInicio a{  
+  color: rgba(255, 255, 255, 0.685);
+}
+
+
+
+
+/*CABECERA*/
+
+
+.img_logo{
+  width: 100px;
+  margin-left: 6px;
+  position: absolute;
+  margin-top: 6px;
+}
+
+.imgInicio_logo{
+  width: 100px;
+  margin-left: 6px;
+  position: absolute;
+  margin-top: 6px;
 }
 
 .img_logo_index{
@@ -68,7 +146,7 @@ margin: -15px;
 
 .menu{
   top: -20px;
-    left: 240px;
+  left: 240px;
 }
 
 #menu_principal{
@@ -204,6 +282,15 @@ footer h5{
 
 /*estilos del menu lateral de filtros*/
 
+#filtrosActivos{
+  text-align: center;
+  font-size: 20px;
+}
+
+.menuFiltros{
+ margin-left: -85px;
+}
+
 #cdolar{
   margin-left: 20px;
 }
@@ -221,25 +308,25 @@ footer h5{
 }
 
 #baplicar{
-  width: 70px;
-  margin-left: 47px;
+  margin-left: 30px;
   margin-top: 10px;
 }
 
 #pfiltros{
-  margin-left: 47px;
+ /* margin-left: 47px;*/
   margin-top: 8px;
 }
 
 /*BOTONES DE BUSQUEDA pagina INDEX*/
 
+/*
 #comboOperacion, #comboPropiedad, #comboDormitorios, #botonBuscar{
   position: absolute;
     width: 150px;
     height: 33px;
 }
-
-
+*/
+/*
 #comboOperacion {
   top: 250px;
   left: 226px;
@@ -257,17 +344,20 @@ footer h5{
   top: 250px;
   left: 659px;
 }
+*/
+/*
 #botonBuscar{
   top: 250px;
   left: 960px;
-}
+}*/
 
+/*
 #tituloFiltro{
   text-transform: none;
   position: relative;
   top: 217px;
   left: -260px;  
-}
+}*/
 
 #displayIndex{
   border: 1px solid black;
@@ -321,9 +411,6 @@ p {
   height: 150px;
 }
 
-#comboDormitorios{
-  width: 295px;
-}
   
 
 #botonBuscar{
@@ -447,6 +534,22 @@ iframe{
 
 /***********************************/
 
+@media (max-width: 1200px){
+  #comboOperacion, #comboPropiedad, #comboDormitorios{
+    padding: 10px;
+    margin: 10px;
+  }
+
+  #filtrosPrecios, #filtrosPropiedad, #filtrosDormitorios {
+    padding: 15px;
+    width: 33%;
+    margin-left: 0px;
+}
+
+
+
+/***********************************/
+
 @media (max-width: 929px){
   #contenedorMapa {
     margin-left: 45px;
@@ -478,7 +581,10 @@ iframe {
   height: 377px;
   margin-left: 15px;
 }
-}
+/*
+#filtrosPrecios, #filtrosPropiedad, #filtrosDormitorios {
+  margin-left: 65px;
+}*/
 /****************************************/
 
 @media (max-width: 832px){
@@ -526,6 +632,22 @@ iframe {
   left: 140px;
 }
 
+.imgInicio_logo{
+  width: 80px;;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+#headerInicio{
+  padding-left: 10px;
+}
+#comboOperacion, #comboPropiedad, #comboDormitorios{
+  padding: 10px;
+    margin: 0px;
+    font-size: 14px;
+    margin-top: 25px;
+
+}
+
 }
 
 /****************************************/
@@ -538,10 +660,41 @@ iframe {
 
 
 /*************************************/
+
+@media (max-width: 768px){
+
+#filtrosPrecios{
+  display: none;
+ /* visibility: hidden;*/
+}
+
+#filtrosPropiedad, #filtrosDormitorios {
+  padding: 15px;
+ width: 49%;
+
+}
+
+}
+
+/***********************************/
+
+
+
 @media (max-width: 747px){
 form{
   width: 260px;
 }
+
+#navInicio{
+  padding-right:0px;
+  margin-left: 10px;
+}
+
+#menuInicio{ 
+  padding-right: 0px;
+}
+
+
 #menu_index_nosotros {
   margin-top: 5px;
   margin-left: -5px;
@@ -567,7 +720,28 @@ iframe {
 .menu {
   left: 120px;
 }
+
+
 }
+/*********************************/
+
+@media (max-width: 695px){
+  #navInicio{
+    padding-left: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+  }
+  #menuInicio li{
+    padding-right: 0px;
+  }
+ 
+  #menuInicio a{
+   font-size: 16px;
+  }
+}
+
+
+
 
 /**********************************/
 @media (max-width: 613px){
@@ -595,6 +769,8 @@ a{
   margin-left: 0px;
 
 }
+
+
 #botEnviar, #botLimpiar {
   width: 115px;
   }
@@ -607,6 +783,17 @@ a{
   #menu_index_emprendimientos {
     margin-top: 5px;
     margin-left: 52px;
+}
+
+#navInicio {
+  top: 5px;
+}
+
+.imgInicio_logo {
+  width: 60px;
+}
+#menuInicio a{
+  padding-left: 5px;
 }
   #menu_index {
     margin-top: 27px;
@@ -664,6 +851,10 @@ a{
     height: 330px;
     margin-left: 0px;
   }
+  .imgs{
+    height: 100%;
+    width: 100%;
+  }
  }
 
 
@@ -694,7 +885,7 @@ footer h5 {
 #contenedorMapa {
   margin-left: 64px;
 }
-
+}
 /************************************/
 }
 @media (max-width: 310px){
@@ -704,8 +895,10 @@ footer h5 {
   #menu_index_nosotros {
     margin-left: 60px;
 }
+
+footer h5{
+font-size: 13px;
+
 }
-
-
-
-
+}
+}

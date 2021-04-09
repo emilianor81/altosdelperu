@@ -12,15 +12,25 @@ let panelFiltrosActivos = document.querySelector("#filtrosActivos");
 let aIndex = document.querySelectorAll(".aIndex");
 let contenedorPrincipal = document.querySelector("#contenedorPrincipal");
 let contenedor = document.querySelector("#displayIndex");
-
-
+let menuIndex = document.querySelector("#navInicio");
+iDesde.value = 5;
+console.log(iDesde.value);
+iDesde.value = '';
+console.log(iDesde.value);
 
 //DECLARO LAS FUNCIONES
+/*
+function alinearMenuInicio() {
+    menuIndex.style.marginLeft = "-85px";
+}*/
+
+
 
 function LimpiarPanelFiltros() {
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
 }
+
 
 function CambiarColorLink() {
     aIndex[0].style.color = "#00000098";
@@ -75,6 +85,10 @@ function DesCheckDorm(seleccionado) { //ver de estos deschek para q no
             cbox2.checked = false;
             cbox3.checked = false;
             cbox4.checked = false;
+            iDesde.value = '';
+            iHasta.value = '';
+
+          //  iDesde.innerText = 
 
     }
 
@@ -107,6 +121,9 @@ function DesCheckTipo(seleccionado) {
             cboxTerrenoPozo.checked = false;
             cboxCasa.checked = false;
             cboxDepto.checked = false;
+            iDesde.value = '';
+            iHasta.value = '';
+
 
     }
 }
@@ -134,6 +151,7 @@ function mostrarSeleccionPanelFiltrosProp(seleccionado) {
             </div>
             <br>
            `
+        //   alinearMenuInicio();
         }
     });
 }
@@ -297,6 +315,8 @@ bAplicar.addEventListener('click', (evt) => {
         pDesde = iDesde.value;
         pHasta = iHasta.value;
         renderIndexPrecio(pDesde, pHasta);
+        DesCheckTipo(evt.target.id);
+    DesCheckDorm(evt.target.id);
 
     } else {
         alert("Complete ambos campos Desde y Hasta");
@@ -376,11 +396,13 @@ cboxTerrenoPozo.addEventListener('click', (evt) => {
 let cboxCasa = document.querySelector('#cboxCasa');
 cboxCasa.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
+    console.log(evt);
     mostrarSeleccionPanelFiltrosProp('Casa');
     estilosPanelFiltros();
     LimpiarPanelFiltros();
     panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: Casa </p>`;
     panelFiltrosActivos.style.color = "red";
+    console.log(evt.target.id);
     DesCheckTipo(evt.target.id);
     DesCheckDorm(evt.target.id);
 
@@ -392,12 +414,15 @@ cboxCasa.addEventListener('click', (evt) => {
 let cboxDepto = document.querySelector('#cboxDepto');
 cboxDepto.addEventListener('click', (evt) => {
     document.querySelector("#displayIndex").innerText = ``
+    console.log(evt);
+
     mostrarSeleccionPanelFiltrosProp('Departamento');
     estilosPanelFiltros();
     LimpiarPanelFiltros();
 
     panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: Departamento </p>`;
     panelFiltrosActivos.style.color = "red";
+    console.log(evt.target.id);
     DesCheckTipo(evt.target.id);
     DesCheckDorm(evt.target.id);
 
