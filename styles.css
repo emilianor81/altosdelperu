@@ -208,6 +208,17 @@ a:hover {
   width: 40px;}
 
 
+#footer_index2{
+    background-color: #444443;
+    color: #f0e2d0;
+    padding: 15px;
+  
+  }
+  
+  
+#footer_index2 img{
+    width: 40px;}
+
 footer h3 {
   color: #aa8976;
   font-size: 20px;
@@ -440,7 +451,7 @@ iframe{
 
 .cajasEmprendimientos{
   display: flex;
-  border: 1px solid grey;
+  border: 5px solid rgb(75, 73, 73);
   padding: 10px;
   margin: 10px;
 }
@@ -458,7 +469,7 @@ iframe{
 
 .cajasNosotros{
   display: flex;
-  border: 1px solid grey;
+  border: 5px solid rgb(75, 73, 73);
   width: 1150px;
     padding: 10px;
   margin: 10px;
