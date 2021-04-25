@@ -19,18 +19,11 @@ iDesde.value = '';
 console.log(iDesde.value);
 
 //DECLARO LAS FUNCIONES
-/*
-function alinearMenuInicio() {
-    menuIndex.style.marginLeft = "-85px";
-}*/
-
-
 
 function LimpiarPanelFiltros() {
     panelFiltrosActivos.innerHTML = ``;
     panelFiltrosActivos.innerHTML += `<h6 id="pfiltros">Filtros Activos:</h6>`;
 }
-
 
 function CambiarColorLink() {
     aIndex[0].style.color = "#00000098";
@@ -58,7 +51,7 @@ $(() => { //Esto se ejecuta una vez termina de cargar todo el DOM, es algo adici
     })
 })
 
-function DesCheckDorm(seleccionado) { //ver de estos deschek para q no 
+function DesCheckDorm(seleccionado) { 
     switch (seleccionado) {
         case "cbox1":
             cbox2.checked = false;
@@ -87,8 +80,6 @@ function DesCheckDorm(seleccionado) { //ver de estos deschek para q no
             cbox4.checked = false;
             iDesde.value = '';
             iHasta.value = '';
-
-          //  iDesde.innerText = 
 
     }
 
@@ -128,11 +119,8 @@ function DesCheckTipo(seleccionado) {
     }
 }
 
-
-function mostrarSeleccionPanelFiltrosProp(seleccionado) {
-    listaPropiedadesJSON.map(elemento => {
-        if (elemento.tipo == seleccionado) {
-            contenedorFiltros.style.display = "";
+function pegarValoresFiltros (elemento){
+    contenedorFiltros.style.display = "";
             contenedor.innerHTML += ` 
             <div class= "contFiltradas">
             <p>
@@ -151,7 +139,20 @@ function mostrarSeleccionPanelFiltrosProp(seleccionado) {
             </div>
             <br>
            `
-        //   alinearMenuInicio();
+}
+
+function mostrarSeleccionPanelFiltrosDorm(seleccionado) {
+    listaPropiedadesJSON.map(elemento => {
+        if (elemento.dormitorios == seleccionado) {
+        pegarValoresFiltros (elemento);
+        }
+    });
+}
+function mostrarSeleccionPanelFiltrosProp(seleccionado) {
+    listaPropiedadesJSON.map(elemento => {
+        if (elemento.tipo == seleccionado) {
+            pegarValoresFiltros (elemento)
+           
         }
     });
 }
@@ -160,52 +161,7 @@ function mostrarSeleccionPanelFiltrosProp(seleccionado) {
 function mostrarSeleccionPanelFiltrosOpe(seleccionado) {
     listaPropiedadesJSON.map(elemento => {
         if (elemento.operacion == seleccionado) {
-            contenedorFiltros.style.display = "";
-            contenedor.innerHTML += ` 
-            <div class= "contFiltradas">
-            <p>
-            <ul>
-            <li> Tipo: ${elemento.tipo}</li>
-            <li> Dormitorios: ${elemento.dormitorios}</li>
-            <li> Precio: ${elemento.precio}</li>
-            <li> Operacion: ${elemento.operacion}</li>
-            <li> Detalle: ${elemento.detalle}</li> 
-            <li> Fotos: </li> </ul></p>
-            <div class="galerias">
-            <img src=${elemento.img[0]} class="imgs">
-            <img src=${elemento.img[1]} class="imgs">
-            <img src=${elemento.img[2]} class="imgs">
-            </div>
-            </div>
-            <br>
-           `
-        }
-    });
-}
-
-
-function mostrarSeleccionPanelFiltrosDorm(seleccionado) {
-    listaPropiedadesJSON.map(elemento => {
-        if (elemento.dormitorios == seleccionado) {
-            contenedorFiltros.style.display = "";
-            contenedor.innerHTML += ` 
-            <div class= "contFiltradas">
-            <p>
-            <ul>
-            <li> Tipo: ${elemento.tipo}</li>
-            <li> Dormitorios: ${elemento.dormitorios}</li>
-            <li> Precio: ${elemento.precio}</li>
-            <li> Operacion: ${elemento.operacion}</li>
-            <li> Detalle: ${elemento.detalle}</li> 
-            <li> Fotos: </li> </ul></p>
-            <div class="galerias">
-            <img src=${elemento.img[0]} class="imgs">
-            <img src=${elemento.img[1]} class="imgs">
-            <img src=${elemento.img[2]} class="imgs">
-            </div>
-            </div>
-            <br>
-           `
+            pegarValoresFiltros (elemento);
         }
     });
 }
@@ -297,9 +253,9 @@ comboDorm.addEventListener('change', (evt) => {
 
 const renderIndexDorm = (seleccion) => {
     document.querySelector("#displayIndex").innerText = ``
-    mostrarSeleccionPanelFiltrosDorm(seleccion);
+    mostrarSeleccionPanelFiltrosDorm(seleccion);//esto agregue
     estilosPanelFiltros();
-    panelFiltrosActivos.innerHTML += ` <p> Tipo Propiedad: ${seleccion}</p>`;
+    panelFiltrosActivos.innerHTML += ` <p> Cantidad de Dormitorios: ${seleccion}</p>`;
     panelFiltrosActivos.style.color = "red";
     CambiarColorLink();
 }
@@ -357,126 +313,88 @@ const renderIndexPrecio = (Desde, Hasta) => {
     panelFiltrosActivos.style.color = "red";
 }
 
-
-
 // EVENTO CLICK DEL combo checkbox tipo propiedad --- cboxTerreno
+
+function eventoClickCombos(eventoTarget) {
+    document.querySelector("#displayIndex").innerText = ``
+    let tipo = eventoTarget.slice(4);
+    console.log(tipo);
+    if (tipo == "TerrenoPozo"){
+        tipo = 'Terreno en pozo';
+    }
+    console.log(tipo);
+    mostrarSeleccionPanelFiltrosProp(tipo);
+    estilosPanelFiltros();
+    LimpiarPanelFiltros();
+    panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: ${tipo} </p>`;
+    panelFiltrosActivos.style.color = "red";
+    DesCheckTipo(eventoTarget);
+    DesCheckDorm(eventoTarget);
+}
 
 let cboxTerreno = document.querySelector('#cboxTerreno');
 cboxTerreno.addEventListener('click', (evt) => {
-    console.log(evt.target.id);
-    document.querySelector("#displayIndex").innerText = ``
-    mostrarSeleccionPanelFiltrosProp('Terreno');
-    estilosPanelFiltros();
-    LimpiarPanelFiltros();
-    panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: Terreno </p>`;
-    panelFiltrosActivos.style.color = "red";
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
+    eventoClickCombos(evt.target.id);
 })
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cboxTerrenoeN pOZO
 
 let cboxTerrenoPozo = document.querySelector('#cboxTerrenoPozo');
 cboxTerrenoPozo.addEventListener('click', (evt) => {
-    document.querySelector("#displayIndex").innerText = ``
-    mostrarSeleccionPanelFiltrosProp('Terreno en pozo');
-    estilosPanelFiltros();
-    LimpiarPanelFiltros();
-    panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: Terreno en pozo</p>`;
-    panelFiltrosActivos.style.color = "red";
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
-
-
-
+    eventoClickCombos(evt.target.id);
 })
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cboxCasa
 
 let cboxCasa = document.querySelector('#cboxCasa');
 cboxCasa.addEventListener('click', (evt) => {
-    document.querySelector("#displayIndex").innerText = ``
-    console.log(evt);
-    mostrarSeleccionPanelFiltrosProp('Casa');
-    estilosPanelFiltros();
-    LimpiarPanelFiltros();
-    panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: Casa </p>`;
-    panelFiltrosActivos.style.color = "red";
-    console.log(evt.target.id);
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
-
+    eventoClickCombos(evt.target.id);
 })
-
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cboxDepto
 
 let cboxDepto = document.querySelector('#cboxDepto');
 cboxDepto.addEventListener('click', (evt) => {
-    document.querySelector("#displayIndex").innerText = ``
-    console.log(evt);
-
-    mostrarSeleccionPanelFiltrosProp('Departamento');
-    estilosPanelFiltros();
-    LimpiarPanelFiltros();
-
-    panelFiltrosActivos.innerHTML += `<p> Tipo de propiedad: Departamento </p>`;
-    panelFiltrosActivos.style.color = "red";
-    console.log(evt.target.id);
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
-
-
+    eventoClickCombos(evt.target.id);
 })
 
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cbox1
 
-let cbox1 = document.querySelector('#cbox1');
-cbox1.addEventListener('click', (evt) => {
+function eventoClickCombosDorm(eventoTarget) {
     document.querySelector("#displayIndex").innerText = ``
-    mostrarSeleccionPanelFiltrosDorm(1);
+    console.log(eventoTarget);
+    let dormitorios = eventoTarget.slice(4);
+    console.log(dormitorios);
+    mostrarSeleccionPanelFiltrosDorm(dormitorios);
     estilosPanelFiltros();
     LimpiarPanelFiltros();
-    panelFiltrosActivos.innerHTML += `<p> Cantidad de Dormitorios: 1 </p>`;
+    panelFiltrosActivos.innerHTML += `<p> Cantidad de Dormitorios: ${dormitorios} </p>`;
     panelFiltrosActivos.style.color = "red";
+    DesCheckTipo(eventoTarget);
+    DesCheckDorm(eventoTarget);
+}
 
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
+let cbox1 = document.querySelector('#cbox1');
+cbox1.addEventListener('click', (evt) => {
+    eventoClickCombosDorm(evt.target.id);
+    console.log(evt.target.id);
+    
 })
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cbox2
 
 let cbox2 = document.querySelector('#cbox2');
 cbox2.addEventListener('click', (evt) => {
-    document.querySelector("#displayIndex").innerText = ``
-    mostrarSeleccionPanelFiltrosDorm(2);
-    estilosPanelFiltros();
-    LimpiarPanelFiltros();
-    panelFiltrosActivos.innerHTML += `<p> Cantidad de Dormitorios: 2 </p>`;
-    panelFiltrosActivos.style.color = "red";
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
-
-
+    eventoClickCombosDorm(evt.target.id);
 })
-
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cbox3
 
 let cbox3 = document.querySelector('#cbox3');
 cbox3.addEventListener('click', (evt) => {
-    document.querySelector("#displayIndex").innerText = ``
-    mostrarSeleccionPanelFiltrosDorm(3);
-    estilosPanelFiltros();
-    LimpiarPanelFiltros();
-    panelFiltrosActivos.innerHTML += `<p> Cantidad de Dormitorios: 3 </p>`;
-    panelFiltrosActivos.style.color = "red";
-    DesCheckTipo(evt.target.id);
-    DesCheckDorm(evt.target.id);
-
+    eventoClickCombosDorm(evt.target.id);
 })
-
 
 // EVENTO CLICK DEL combos checkbox tipo propiedad --- cbox4
 
@@ -506,7 +424,6 @@ cbox4.addEventListener('click', (evt) => {
            `
         }
         estilosPanelFiltros();
-
     })
     LimpiarPanelFiltros();
     panelFiltrosActivos.innerHTML += `<p> Cantidad de Dormitorios 4 o mas</p>`;
